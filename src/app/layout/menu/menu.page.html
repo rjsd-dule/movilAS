@@ -1,0 +1,49 @@
+<ion-menu contentId="main-content" side="start">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title style="font-size: 12px;">{{constant.USERNAME}} {{constant.LASTNAME}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <!-- Ejemplo de rutas dentro del menú -->
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="grafica" routerDirection="root">
+          <ion-label>Ver Gráfica</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="ubicacion" routerDirection="root">
+          <ion-label>Ubicaciones</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="token" routerDirection="root">
+          <ion-label>Token</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="cultivo" routerDirection="root">
+          <ion-label>Cultivo</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button> <!-- Botón para abrir/cerrar el menú -->
+      </ion-buttons>
+      <ion-title>{{ titulo }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <!-- Aquí se mostrarán las páginas hijas (grafica, token, etc.) -->
+    <ion-router-outlet></ion-router-outlet>
+  </ion-content>
+</div>

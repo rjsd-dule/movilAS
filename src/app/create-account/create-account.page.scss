@@ -1,0 +1,35 @@
+.login-item {
+    ion-input {
+        font-size: 14px;
+        --placeholder-color: rgb(196, 191, 191); // Cambia color a rojo
+    }
+
+    ion-button {
+      text-transform: none;   // Evita mayúsculas
+      font-size: 12px;        // Tamaño del texto
+      color: rgb(196, 191, 191);            // Cambia color a rojo
+    }
+  }
+
+  .container-image {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    img{
+        border-radius: 12px;
+    }
+  }
+
+  .login-button{
+    --background: #3498DB;
+    --color: white;
+    margin: 0px 12px;
+  }
+
+  .bottom-links{
+    display: flex;
+    justify-content: center;
+    margin: 20px 12px;
+  }
+  
+  

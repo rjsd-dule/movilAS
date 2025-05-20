@@ -34,4 +34,21 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+// @import "@ionic/angular/css/palettes/dark.system.css";
+
+.custom-modal{
+    --max-height: 200px;
+    --max-width: 250px;
+    &::part(content){
+        border-radius: 20px;
+    }
+   
+}
+
+.custom-modal-ubicacion {
+    --max-height: auto;
+    --max-width: auto;
+    // &::part(content){
+    //     border-radius: 20px;
+    // }
+}

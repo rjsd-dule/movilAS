@@ -1,0 +1,12 @@
+<div class="container">
+  <ion-buttons slot="start">
+    <ion-button (click)="closeModal()">
+      <ion-icon name="close-sharp"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+    <div class="image">
+      <img [src]="src" alt="">
+    </div>
+    <div class="title"> {{title}}</div>
+    <div class="text">{{message}}</div>
+</div>

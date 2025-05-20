@@ -1,0 +1,184 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Cultivos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen="true">
+  @if (this.mode === 'view') {
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-label>
+          <h3>Nombre del Cultivo</h3>
+          <p>{{cultivo.nombreCultivo}}</p>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>
+          <h3>Descripcion del cultivo</h3>
+          <p>{{cultivo.descripcion}}</p>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="7">
+        <ion-label>
+          <h3>Ciclo de Cultivo</h3>
+          <p>{{cultivo.cicloDeCultivo}}</p>
+        </ion-label>
+      </ion-col>
+      <ion-col size="5">
+        <ion-label>
+          <h3>Temporada</h3>
+          <p>{{cultivo.temporada}}</p>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>
+          <h3>Requerimientos Climaticos</h3>
+          <p>{{cultivo.requerimientosClimaticos}}</p>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>
+          <h3>Fecha de Siembra</h3>
+          <p>{{cultivo.fechaSiembra}}</p>
+        </ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>
+          <h3>Fecha de Cosecha</h3>
+          <p>{{cultivo.fechaCosecha}}</p>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>
+          <h3>Tipo de Suelo</h3>
+          <p>{{cultivo.tipoDeSuelo}}</p>
+        </ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>
+          <h3>Ph Recomendado</h3>
+          <p>{{cultivo.phRecomendado}}</p>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>
+          <h3>Creado Por</h3>
+          <p>{{cultivo.creadoPor}}</p>
+        </ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>
+          <h3>Modificado Por</h3>
+          <p>{{cultivo.modificadoPor}}</p>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  } @else {
+  <form [formGroup]="formGroup" (ngSubmit)="submitCultivo()">
+    <ion-item>
+      <ion-input label="Nombre del Cultivo" type="text" labelPlacement="stacked" placeholder="Nombrel del cultivo"
+        formControlName="nombreCultivo">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Descripción" type="text" labelPlacement="stacked" placeholder="Descripción"
+        formControlName="descripcion">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Ciclo del Cultivo" type="number" labelPlacement="stacked" placeholder="Ciclo del Cultivo"
+        formControlName="cicloDeCultivo">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Temporada" type="text" labelPlacement="stacked" placeholder="Temporada"
+        formControlName="temporada">
+      </ion-input>
+    </ion-item>
+
+
+
+    <ion-item>
+      <ion-input label="Requerimientos Climaticos" type="text" labelPlacement="stacked" placeholder="Requerimientos Climaticos"
+        formControlName="requerimientosClimaticos">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Fecha de Siembra" type="date" labelPlacement="stacked" placeholder="Fecha de Siembra"
+        formControlName="fechaSiembra">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Fecha de Cosecha" type="date" labelPlacement="stacked" placeholder="Fecha de Cosecha"
+        formControlName="fechaCosecha">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Tipo de Suelo" type="text" labelPlacement="stacked" placeholder="Tipo de Suelo"
+        formControlName="tipoDeSuelo">
+      </ion-input>
+    </ion-item>
+
+    <ion-list *ngIf="this.mode == 'create'">
+      <ion-item>
+        <ion-select label="Seleccione una ubicación" label-placement="stacked" formControlName="ubicacionid"
+          placeholder="Seleccione una Ubicación">
+          <ion-select-option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.ubicacionId">
+            {{ ubicacion.nombreUbicacion }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-input label="Ph Recomendado" type="text" labelPlacement="stacked" placeholder="Ph Recomendado"
+        formControlName="phRecomendado">
+      </ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="this.mode == 'create'">
+      <ion-input label="Creado por" type="text" labelPlacement="stacked" placeholder="Creado por"
+        formControlName="creadoPor">
+      </ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="this.mode == 'edit'">
+      <ion-input label="Modificado por" type="text" labelPlacement="stacked" placeholder="Modificado por"
+        formControlName="modificadoPor">
+      </ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="this.mode == 'create' ? !formGroup.valid : null">
+      <!-- Si es modo create => "Crear Ubicación", sino => "Guardar Cambios" -->
+      {{ mode === 'create' ? 'Crear Cultivo' : 'Guardar Cambios' }}
+    </ion-button>
+  </form>
+  }
+
+</ion-content>

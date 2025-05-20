@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-menu>
+
+  </ion-menu>
+  <div class="container">
+    <div class="container-image">
+      <img src="assets/images/image1.png" alt="">
+    </div>
+    <div class="container-form">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <ion-item class="login-item" style="width: 94%; padding-bottom: 18px;">
+          <ion-input type="text" labelPlacement="stacked" placeholder="Nombre" formControlName="name">
+            <ion-icon slot="start" name="person-sharp" aria-hidden="true"></ion-icon>
+            <ion-button fill="clear" slot="end" aria-label="Requerido">
+              (requerido)
+            </ion-button>
+          </ion-input>
+        </ion-item>
+        <ion-item class="login-item" style="width: 94%; padding-bottom: 18px;">
+          <ion-input type="text" labelPlacement="stacked" placeholder="Email" formControlName="email">
+            <ion-icon slot="start" name="at-outline" aria-hidden="true"></ion-icon>
+            <ion-button fill="clear" slot="end" aria-label="Requerido">
+              (requerido)
+            </ion-button>
+          </ion-input>
+        </ion-item>
+        <ion-item class="login-item" style="width: 94%; padding-bottom: 40px;">
+          <ion-input type="password" labelPlacement="stacked" placeholder="Password" formControlName="password">
+            <ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
+            <ion-button fill="clear" slot="end" aria-label="Requerido">
+              (requerido)
+            </ion-button>
+          </ion-input>
+        </ion-item>
+        <ion-button class="login-button" expand="block" type="submit" [disabled]="!loginForm.valid">
+        Crear Cuenta
+      </ion-button>
+    </form>
+    <!-- <ion-button (click)="openModal()">Abrir Modal</ion-button> -->
+      <div class="bottom-links">
+        <p style="font-size: 12px">Ya tienes una cuenta ? <a style="font-size: 12px; color: orange;" (click)="login()"> Acceder</a></p>
+        <!-- <a style="font-size: 14px; color: black;" (click)="crearCuenta()">Crear Cuenta</a>
+        <a style="font-size: 14px; color: black;" (click)="olvideContrasena()">Olvidó su Contraseña</a> -->
+      </div>
+      
+    </div>
+  </div>
+</ion-content>

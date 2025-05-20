@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{getTitulo()}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form [formGroup]="formGroup" (ngSubmit)="createUbicacion()">
+    <ion-item>
+      <ion-input
+      label="Nombre de Ubicación"
+        type="text"
+        labelPlacement="stacked"
+        placeholder="Nombre de Ubicación"
+        formControlName="nombreUbicacion">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+      label="Dirección"
+        type="text"
+        labelPlacement="stacked"
+        placeholder="Dirección"
+        formControlName="direccion">
+      </ion-input>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-select label="Provincia" label-placement="stacked" formControlName="estadoProvincia" placeholder="Seleccione una provincia" [ngClass]="!formGroup.valid ? 'select-disabled' : '' ">
+          <ion-select-option *ngFor="let provincia of provincias" [value]="provincia" >
+            {{ provincia }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-input
+      label="Descripción"
+        type="text"
+        labelPlacement="stacked"
+        placeholder="Descripción"
+        formControlName="descripcion">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+      label="Comentario"
+        type="text"
+        labelPlacement="stacked"
+        placeholder="Comentario"
+        formControlName="comentarios">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+      label="Latitud"
+        type="text"
+        labelPlacement="stacked"
+        placeholder="Latitud"
+        formControlName="latitud">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+      label="Longitud"
+        type="text"
+        labelPlacement="stacked"
+        placeholder="Longitud"
+        formControlName="longitud">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+      label="Creado por"
+        type="text"
+        labelPlacement="stacked"
+        placeholder="Creado por"
+        formControlName="creadoPor">
+      </ion-input>
+    </ion-item>
+
+    <ion-button *ngIf="mode === 'create' || mode === 'edit'" expand="block" type="submit" [disabled]="!formGroup.valid">
+      <!-- Si es modo create => "Crear Ubicación", sino => "Guardar Cambios" -->
+      {{ mode === 'create' ? 'Crear Ubicación' : 'Guardar Cambios' }}
+    </ion-button>
+    <ion-button
+    expand="block"
+    color="medium"
+    *ngIf="mode === 'view'"
+    (click)="habilitarEdicion()"
+  >
+    Modificar
+  </ion-button>
+
+  </form>
+</ion-content>

@@ -1,0 +1,22 @@
+
+<ion-content [fullscreen]="true">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="openModal()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+  <!-- <h2 style="margin-left: 16px;">Ubicaciones</h2> -->
+  <ion-list>
+    <ion-item *ngFor="let ubicacion of ubicaciones">
+      <ion-label>{{ ubicacion.nombreUbicacion }}</ion-label>
+      <!-- Botón al final del item con ícono de ojo -->
+      <ion-button slot="end" fill="clear" (click)="verDetalle(ubicacion)">
+        <ion-icon name="eye"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" fill="clear" (click)="deleteUbicacion(ubicacion)">
+        <ion-icon name="trash-sharp"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

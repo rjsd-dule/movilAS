@@ -1,20 +1,41 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <!-- Botón/ícono a la izquierda -->
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Foro</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="container-general">
+    <div class="section-1">
+      <swiper-container [loop]="true" [pagination]="true">
+        <swiper-slide>
+          <div class="container-image">
+            <img src="assets/images/image1.png" alt="">
+          </div>
+        </swiper-slide>
+        <swiper-slide>Slide 2</swiper-slide>
+        <swiper-slide>Slide 3</swiper-slide>
+      </swiper-container>
+    </div>
+    <div class="divider">
+    </div>
+    <div class="section-2">
+      <!-- Botón principal -->
+      <ion-button expand="block" class="login-button" (click)="onLogin()">
+        INICIAR SESIÓN
+      </ion-button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+      <!-- Sección de enlaces secundarios -->
+      <div class="bottom-links">
+        <a style="font-size: 14px; color: black;" (click)="crearCuenta()">Crear Cuenta</a>
+        <a style="font-size: 14px; color: black;" (click)="olvideContrasena()">Olvidó su Contraseña</a>
+      </div>
+    </div>
   </div>
 </ion-content>

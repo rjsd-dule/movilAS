@@ -1,0 +1,46 @@
+<ion-content>
+  <ion-item>
+    <ion-label style="font-size: 12px;">Seleccione una ubicación: </ion-label>
+    <ion-select [(ngModel)]="ubicacionId" (ionChange)="onUbicacionChange()">
+      <ion-select-option style="font-size: 12px;" *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.ubicacionId">
+        {{ ubicacion.nombreUbicacion }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label style="font-size: 12px;">Seleccione lo que desea visualizar (NPK o pH): </ion-label>
+    <ion-select [(ngModel)]="selectedNpkPh" (ionChange)="onNpkPhChange()">
+      <ion-select-option value="npk">NPK</ion-select-option>
+      <ion-select-option value="ph">pH</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label style="font-size: 12px;">Tipo de Gráfico: </ion-label>
+    <ion-select [(ngModel)]="selectedChartType" (ionChange)="onChartTypeChange()">
+      <ion-select-option value="line">Línea</ion-select-option>
+      <ion-select-option value="bar">Barras</ion-select-option>
+      <ion-select-option value="scatter">Scatter</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="selectedNpkPh === 'npk'">
+    <ion-label style="font-size: 12px;">Elementos Minerales: </ion-label>
+    <ion-select [(ngModel)]="selectedMinerals" multiple="true" (ionChange)="onMineralsChange()">
+      <ion-select-option value="2">Nitrógeno</ion-select-option>
+      <ion-select-option value="1">Fósforo</ion-select-option>
+      <ion-select-option value="3">Potasio</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <div>
+    @if(datasets[0]?.data?.length == 0) {
+      <div style="text-align: center; margin: 40px 0px; font-size: 12px;">No hay Datos para mostrar en la gráfica</div>
+    } @else {
+    <canvas id="chart"> {{ chart }}</canvas>
+    <div *ngIf="selectedNpkPh === 'ph'" style="font-size: 10px; text-align: center;">Grado de alcalinidad: {{ datasets[0]?.grado }}</div>
+
+    }
+  </div>
+</ion-content>

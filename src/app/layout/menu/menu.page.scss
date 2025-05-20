@@ -1,0 +1,37 @@
+.menu-container {
+    /* Ajusta la posición según tu diseño; por ejemplo, abajo a la derecha */
+    position: relative; 
+    display: flex;
+    align-items: center;
+    padding: 16px;
+  }
+  
+  /* Menú horizontal */
+  .horizontal-menu {
+    display: flex;
+    gap: 16px;             /* Espacio entre iconos */
+    margin-left: 8px;      /* Separación respecto al botón */
+    max-width: 0;          /* Comienza colapsado */
+    overflow: hidden;      /* Evita que se vean los iconos al estar cerrado */
+    opacity: 0;            /* Menú invisible al inicio */
+    transition: 
+      max-width 0.3s ease-in-out, 
+      opacity 0.3s ease-in-out, 
+      transform 0.3s ease-in-out;
+    background: #7a717173;   /* Color de fondo del menú */
+    border-radius: 8px;
+    padding: 8px 16px;        /* Pequeño padding horizontal */
+  }
+  
+  /* Estado abierto */
+  .horizontal-menu.open {
+    max-width: 200px; /* Ajusta según la cantidad de iconos */
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Opcional: si quieres que el ícono rote para verse “vertical” */
+  ion-icon.rotate-vertical {
+    transform: rotate(90deg);
+  }
+  

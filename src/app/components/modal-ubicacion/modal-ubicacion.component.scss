@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+}
+
+ion-input.md.input-disabled,
+ion-input.ios.input-disabled {
+  opacity: 0.7;
+}
+
+.disabled_input {
+  color: white;
+}
+
+.select-disabled {
+  opacity: 0.9;
+}
+
